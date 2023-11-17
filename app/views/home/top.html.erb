@@ -1,10 +1,19 @@
-<h1>Home#top</h1>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<header>
+<p>宿泊予約管理アプリ</p>
+</header>
+
+<% if flash[:notice] %>
+<p class="notice postbar"><%= flash[:notice] %></p>
+<% end %>
+
 <ul>
 <li>
 <%= link_to "新規登録", new_user_registration_path %>
 </li>
 <li>
 <%= link_to "ログイン", new_user_session_path %>
+</li>
+<li>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 </li>
 </ul>
