@@ -20,4 +20,3 @@ module ShareApp
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-config.i18n.default_locale = :ja
