@@ -1,7 +1,7 @@
 class RoomController < ApplicationController
 
     def index
-        @rooms = Room.all #allメソッドはテーブルのレコードを全て取得できるメソッド 
+        @room = Room.all #allメソッドはテーブルのレコードを全て取得できるメソッド 
     end #indexのend
 
     def new
@@ -21,7 +21,7 @@ class RoomController < ApplicationController
     end #createのend
         
     def show
-      @post = Room.find(params[:id])
+      @room = Room.find(params[:id])
     end #showのend
 
   
