@@ -1,2 +1,29 @@
-<h1>Room#index</h1>
-<p>Find me in app/views/room/index.html.erb</p>
+
+<p><%= "#{room_all_count}" %>件が見つかりました</p>
+<body>
+ <table>
+   <thead>
+     <tr>
+       <th>施設画像</th>
+       <th>施設名</th>
+       <th>紹介文</th>
+       <th>宿泊料金（/日）</th>
+       <th>詳細</th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+   <% @room.each do |room| %>
+       <tr>
+         <td></td>
+         <td><%= room.name %></td>
+         <td><%= user.introduction %></td>
+         <td><%= user.price %></td>
+         <td><%= link_to "詳細はこちら", room %></td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ 
+ 
+ </body>
