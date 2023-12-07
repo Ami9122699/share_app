@@ -10,7 +10,6 @@ class RoomController < ApplicationController
       
     def create
         @room = Room.new(room_params)
-        binding.pry
         if @room.save
           flash[:notice] = "新しい施設を登録しました"  
           redirect_to rooms_path
