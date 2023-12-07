@@ -7,7 +7,7 @@
     <ul>
       <% if user_signed_in? %>
         <li>
-      <%= link_to "施設新規登録", :new_room %>
+      <%= link_to "施設の新規登録", :new_room %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

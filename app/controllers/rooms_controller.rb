@@ -10,14 +10,15 @@ class RoomController < ApplicationController
       
     def create
         @room = Room.new(room_params)
+        binding.pry
         if @room.save
           flash[:notice] = "新しい施設を登録しました"  
-          redirect_to :room
+          redirect_to rooms_path
         else
           flash[:notice] = "施設の登録に失敗しました"
           render "new"
         end
-
+        
     end #createのend
         
     def show
@@ -28,7 +29,8 @@ class RoomController < ApplicationController
 
   private
   def room_params
-  room.require(:room).permit(:name, :introduction, :price, :address)
+    params.require(:room) .permit(:name, :introduction, :price, :address)
   end
 
 end
+
