@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'room/index'
+  get 'room/index' => 'room#index'
+  post 'room/new' => 'room#new'
   get 'home/top'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

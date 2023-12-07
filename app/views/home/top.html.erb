@@ -3,7 +3,8 @@
 </header>
 
 <body>
-    <header>
+  
+    <ul>
       <% if user_signed_in? %>
         <li>
       <%= link_to "施設新規登録", :new_room %>
@@ -19,6 +20,9 @@
           <%= link_to "ログイン", new_user_session_path %>
         </li>
       <% end %>
-    </header>
+
     <%= yield %>
+    </ul>
+    <%= link_to "施設一覧ページ", :room_index %>
+    
   </body>

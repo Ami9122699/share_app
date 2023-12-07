@@ -1,5 +1,5 @@
 
-<p><%= "#{room_all_count}" %>件が見つかりました</p>
+
 <body>
  <table>
    <thead>
@@ -8,18 +8,18 @@
        <th>施設名</th>
        <th>紹介文</th>
        <th>宿泊料金（/日）</th>
-       <th>詳細</th>
+       <th>作成日</th>
      </tr>
    </thead>
  
    <tbody>
    <% @room.each do |room| %>
        <tr>
-         <td></td>
-         <td><%= room.name %></td>
-         <td><%= user.introduction %></td>
-         <td><%= user.price %></td>
-         <td><%= link_to "詳細はこちら", room %></td>
+         <td><img alt="部屋画像"  src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" /></td>
+         <td><%= link_to "name", room %></td>
+         <td><%= room.introduction %></td>
+         <td><%= room.price %></td>
+         <td><%= room.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
        </tr>
      <% end %>
    </tbody>
