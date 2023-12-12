@@ -1,16 +1,16 @@
-class RoomController < ApplicationController
+class RoomsController < ApplicationController
 
     def index
         @rooms = Room.all #allメソッドはテーブルのレコードを全て取得できるメソッド 
     end #indexのend
 
     def new
-        @rooms = Room.new
+        @room = Room.new
     end #newのend
       
     def create
-        @rooms = Room.new(room_params)
-        if @rooms.save
+        @room = Room.new(room_params)
+        if @room.save
           flash[:notice] = "新しい施設を登録しました"  
           redirect_to rooms_path
         else
@@ -20,12 +20,6 @@ class RoomController < ApplicationController
         
     end #createのend
         
-    def show
-      @rooms = Room.find(params[:id])
-    end #showのend
-
-  
-
   private
   def room_params
     params.require(:room) .permit(:name, :introduction, :price, :address)
