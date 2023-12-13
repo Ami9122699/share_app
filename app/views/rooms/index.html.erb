@@ -1,3 +1,7 @@
+<header>
+<p>施設の一覧</p>
+</header>
+
 <% if flash[:alert] %>
  <p class="notice"><%= flash[:alert] %></p>
 <% end %>
@@ -29,4 +33,4 @@
    </tbody>
  </table>
  
- <p><%= link_to "施設新規登録", :new_rooms %></p>
+ <p><%= link_to "施設新規登録", new_room_path %></p>
