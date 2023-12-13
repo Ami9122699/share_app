@@ -1,29 +1,32 @@
+<% if flash[:alert] %>
+ <p class="notice"><%= flash[:alert] %></p>
+<% end %>
+<% if flash[:false] %>
+ <p class="notice"><%= flash[:false] %></p>
+<% end %>
 
-
-<body>
  <table>
    <thead>
      <tr>
        <th>施設画像</th>
        <th>施設名</th>
-       <th>紹介文</th>
-       <th>宿泊料金（/日）</th>
+       <th>施設紹介</th>
+       <th>宿泊料金</th>
        <th>作成日</th>
      </tr>
    </thead>
  
    <tbody>
-   <% @room.each do |room| %>
+   <% @rooms.each do |room| %>
        <tr>
          <td><img alt="部屋画像"  src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" /></td>
          <td><%= link_to "name", room %></td>
          <td><%= room.introduction %></td>
          <td><%= room.price %></td>
-         <td><%= room.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+         <td><%= room.created_at.strftime("%Y/%m/%d %H:%M") %></td>
        </tr>
      <% end %>
    </tbody>
  </table>
  
- 
- </body>
+ <p><%= link_to "施設新規登録", :new_rooms %></p>

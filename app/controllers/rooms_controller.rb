@@ -19,6 +19,19 @@ class RoomsController < ApplicationController
         end
         
     end #createのend
+
+    def show
+      @room = Room.find(params[:id])
+    end
+   
+    def edit
+    end
+   
+    def update
+    end
+   
+    def destroy
+    end
         
   private
   def room_params

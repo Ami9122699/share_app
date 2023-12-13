@@ -8,7 +8,7 @@
      </tr>
  
      <tr>
-       <th><%= f.label :introduction ,"紹介文" %></th>
+       <th><%= f.label :introduction ,"施設紹介" %></th>
        <td><%= f.text_field :introduction %></td>
      </tr>
  
@@ -26,6 +26,7 @@
    <div>
      <ul>
        <li><%= f.submit "登録完了する"%></li>
+       <li><%= link_to "キャンセル", :back %></li>
      </ul>
    </div>
  <% end %>
