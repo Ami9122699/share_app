@@ -21,6 +21,7 @@ class RoomsController < ApplicationController
     end #createのend
 
     def show
+      @room = Room.find(params[:id])
     end
    
     def edit
@@ -30,6 +31,10 @@ class RoomsController < ApplicationController
     end
    
     def destroy
+      @room = Room.find(params[:id])
+      @room.destroy
+      flash[:notice] = "施設を削除しました"
+      redirect_to rooms_path
     end
         
   private
