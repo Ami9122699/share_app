@@ -14,6 +14,7 @@ class RoomsController < ApplicationController
           flash[:notice] = "新しい施設を登録しました"  
           redirect_to rooms_path
         else
+          @reservation = Reservation.find_by(params[:room][:reservation_id])
           flash[:notice] = "施設の登録に失敗しました"
           render "new"
         end
