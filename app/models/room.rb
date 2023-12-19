@@ -1,3 +1,3 @@
 class Room < ApplicationRecord
-    belongs_to :reservations
+    has_many :reservation
 end

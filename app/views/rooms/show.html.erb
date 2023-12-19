@@ -1,5 +1,5 @@
-<%= form_with model: @reservation do |f| %>
-<%= f.hidden_field :room_id, value: @room.id %> 
+
+
 <table>
      <tr>
        <th>画像</th>
@@ -20,6 +20,7 @@
        <th>宿泊料金</th>
        <td><p>¥<%= @room.price %></p></td>
      </tr>
+     <%= form_with model: @reservation do |f| %>
      <tr>
        <th><%= f.label :checkin ,"チェックイン" %></th>
        <td><%= f.date_field :checkin %></td>

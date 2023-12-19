@@ -1,8 +1,7 @@
 class ReservationsController < ApplicationController
 
     def index
-        @reservations = Reservation.all
-        @rooms = Room.all #roomsテーブルの全データを取得する
+        @reservations = Reservation.all.includes(:rooms)
     end
 
     def new
