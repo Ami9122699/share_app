@@ -36,7 +36,9 @@
   </table>
   <%= f.hidden_field :room_id, value: @room.id %>
    <ul>
-   <li><%= f.submit "投稿を完了する"%></li>
+   <li><%= f.submit "投稿を完了する" %>
+   </li>
+
    <li><%= link_to "戻る", home_top_path %></li>
    </ul>
    <% end %>

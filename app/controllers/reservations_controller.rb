@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(params.require(:reservation).permit(:content, :room_id))
         if @reservation.save
           flash[:notice] = "新しい予約を登録しました"  
-          redirect_to reservations
+          redirect_to reservations_path
         else
         #binding.pry    
         @room = Room.find_by(params[:reservation][:room_id])
@@ -26,6 +26,7 @@ class ReservationsController < ApplicationController
     def show
         @reservation = Reservation.find(params[:id])
         @room = Room.new
+        @rooms = @reservation.rooms #リレーションを定義することでこのような記述が可能
         @checkout = @reservation["checkout"] 
         @checkin = @reservation["checkin"] 
         @totalday = @checkout - @checkin
