@@ -1,6 +1,4 @@
-
 <%= form_with model: @reservation do |f| %>
-<%= f.hidden_field :room_id, value: @room.id %> 
 <table>
      <tr>
        <th>画像</th>
@@ -21,26 +19,25 @@
        <th>宿泊料金</th>
        <td><p>¥<%= @room.price %></p></td>
      </tr>
-
-      
      <tr>
-       <th><%= f.label :checkin ,"チェックイン" %></th>
-       <td><%= f.date_field :checkin %></td>
-     </tr>
+    <th><%= f.label :checkin ,"チェックイン" %></th>
+    <td><%= f.date_field :checkin %></td>
+  </tr>
 
-     <tr>
-       <th><%= f.label :checkout ,"チェックアウト" %></th>
-       <td><%= f.date_field :checkout %></td>
-     </tr>
+  <tr>
+    <th><%= f.label :checkout ,"チェックアウト" %></th>
+    <td><%= f.date_field :checkout %></td>
+  </tr>
 
-     <tr>
-       <th><%= f.label :people ,"人数" %></th>
-       <td><%= f.text_field :people %></td>
-     </tr>
-  
-   </table>
-
-   <li><%= f.submit "予約する"%></li>
-   <li><%= link_to "戻る", :rooms %></li>
+  <tr>
+    <th><%= f.label :people ,"人数" %></th>
+    <td><p><%= f.text_field :people %>人</p></td>
+  </tr>
+  </table>
+  <%= f.hidden_field :room_id, value: @room.id %>
+   <ul>
+   <li><%= f.submit "投稿を完了する"%></li>
+   <li><%= link_to "戻る", home_top_path %></li>
+   </ul>
    <% end %>
    

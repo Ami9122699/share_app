@@ -1,7 +1,8 @@
 class ReservationsController < ApplicationController
 
     def index
-        @reservations = Reservation.all.includes(:room)
+        @reservations = Reservation.all
+        @rooms = Room.all
     end
 
     def new
@@ -9,13 +10,12 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        @reservation = Reservation.new(reservation_params)
-       
+        @reservation = Reservation.new(params.require(:reservation).permit(:content, :room_id))
         if @reservation.save
           flash[:notice] = "新しい予約を登録しました"  
-          redirect_to reservations_path
+          redirect_to reservations
         else
-            
+        #binding.pry    
         @room = Room.find_by(params[:reservation][:room_id])
           flash[:notice] = "予約の登録に失敗しました"
           render "new"

@@ -14,7 +14,7 @@
 			<td><%= @reservation.checkout %></td>
 			<td><%= @reservation.checkout %> - <%= @reservation.checkin  %> = <%= @totalday %></td>
 			<td><P><%= @reservation.people %>人</p></td>
-			<td></td>
+			<td><p>¥<%= @reservation.totalprice %></p></td>
 		</tr>
 	</tbody>
 </table>
