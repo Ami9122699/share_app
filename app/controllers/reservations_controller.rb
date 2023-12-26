@@ -26,7 +26,6 @@ class ReservationsController < ApplicationController
     def show
         @reservation = Reservation.find(params[:id])
         @room = Room.new
-        @rooms = @reservation.rooms #リレーションを定義することでこのような記述が可能
         @checkout = @reservation["checkout"] 
         @checkin = @reservation["checkin"] 
         @totalday = @checkout - @checkin
