@@ -1,0 +1,40 @@
+<header>
+<p>宿泊予約</p>
+</header>
+
+
+<% if current_user.present? %>
+<p>こんにちは、<%= current_user.name %>さん！</p>
+<% else %>
+<p>こんにちは、ゲストさん！</p>
+<% end %>
+    <ul>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to "施設新規登録", new_room_path  %>
+        </li>
+        <li>
+        <%= link_to "予約済み一覧", reservations_path %>
+        </li>
+        <li>
+        <%= link_to "登録済み一覧", rooms_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "サインアップ", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+      <% end %>
+
+    <%= yield %>
+    </ul>
+
+    
+
+    
+
