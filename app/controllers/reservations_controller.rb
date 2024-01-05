@@ -2,35 +2,33 @@ class ReservationsController < ApplicationController
 
     def index
         @reservations = Reservation.all
-        @rooms = Room.all
     end
 
-    def new
-        @reservation = Reservation.new
-    end
-
+    def confirm
+        @reservation = Reservation.new(params.permit(:checkin, :checkout, :people))
+        @room = Room.find(params[:room_id])
+        @days = (@reservation.checkout - @reservation.checkin).to_i
+        @price = @days*@room.price*@reservation.people
+       
+    end #confirmのend
+    
     def create
-        @reservation = Reservation.new(params.require(:reservation).permit(:content, :room_id))
-        if @reservation.save
-          flash[:notice] = "新しい予約を登録しました"  
+      @reservation = Reservation.new(params.permit(:checkin, :checkout, :people))
+        @room = Room.find(params[:reservation][:room_id])
+        if  @reservation.save
+       #binding.pry  
+          flash[:notice] = "施設の予約が完了しました"
           redirect_to reservations_path
         else
-        #binding.pry    
-        @room = Room.find_by(params[:reservation][:room_id])
-          flash[:notice] = "予約の登録に失敗しました"
-          render "new"
+       #binding.pry
+          render "confirm"
         end
-        
     end #createのend
 
     def show
-        @reservation = Reservation.find(params[:id])
-        @room = Room.new
-        @checkout = @reservation["checkout"] 
-        @checkin = @reservation["checkin"] 
-        @totalday = @checkout - @checkin
-        @totalprice = @totalday * @room.price
-    end #showのend
+      @reservation = Reservation.find(params[:id])
+      @room = @reservation.room
+    end
 
     def destroy
         @reservation = Reservation.find(params[:id])
@@ -41,7 +39,8 @@ class ReservationsController < ApplicationController
 
     private
     def reservation_params
-    params.require(:reservation) .permit(:checkin, :checkout, :people)
+    params.require(:reservation).permit(:checkin, :checkout, :people)
     end
+
 
 end

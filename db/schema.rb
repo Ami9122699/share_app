@@ -15,17 +15,17 @@ ActiveRecord::Schema.define(version: 2023_12_13_100509) do
   create_table "reservations", force: :cascade do |t|
     t.date "checkin"
     t.date "checkout"
-    t.string "people"
-    t.integer "room_id"
+    t.integer "people"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.integer "room_id"
     t.string "name"
-    t.string "introduction"
-    t.string "price"
-    t.string "address"
+    t.text "introduction"
+    t.integer "price"
+    t.text "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

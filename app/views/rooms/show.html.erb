@@ -1,44 +1,40 @@
-<%= form_with model: @reservation do |f| %>
+
+
 <table>
-     <tr>
-       <th>画像</th>
-       <td><img alt="部屋画像"  src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" /></td>
-     </tr>
-
-     <tr>
-       <th>施設名</th>
-       <td><%= @room.name %></td>
-     </tr>
-
-     <tr>
-       <th>紹介</th>
-       <td><%= @room.introduction %></td>
-     </tr>
-
-     <tr>
-       <th>宿泊料金</th>
-       <td><p>¥<%= @room.price %></p></td>
-     </tr>
-     <tr>
-    <th><%= f.label :checkin ,"チェックイン" %></th>
-    <td><%= f.date_field :checkin %></td>
-  </tr>
-
   <tr>
-    <th><%= f.label :checkout ,"チェックアウト" %></th>
-    <td><%= f.date_field :checkout %></td>
+    <td><img alt="部屋画像"  src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" /></td>
   </tr>
-
   <tr>
-    <th><%= f.label :people ,"人数" %></th>
-    <td><p><%= f.text_field :people %>人</p></td>
+  <td><%= @room.name %></td>
   </tr>
+  <tr>
+  <td><%= @room.address %></td>
+  </tr>
+  <tr>
+  <td><p>¥<%= @room.price %></p></td>
+  </tr>
+</table>
+
+
+<%= form_with url: reservations_confirm_path do |f| %>
+<%= f.hidden_field :room_id, value: @room.id %>
+<table>
+          <tr>
+              <th><%= f.label :checkin, "チェックイン"%></th>
+              <td><%= f.date_field :checkin %></td> 
+          </tr>
+          <tr>
+              <th><%= f.label :checkout, "チェックアウト"%></th>
+              <td><%= f.date_field :checkout %></td>
+          </tr>
+          <tr>
+              <th><%= f.label :people, "人"%></th>
+              <td><%= f.number_field :people %>名様</td>
+          </tr>
   </table>
-  <%= f.hidden_field :room_id, value: @room.id %>
+ 
    <ul>
-   <li><%= f.submit "投稿を完了する" %>
-   </li>
-
+   <li><%= f.submit "確認画面へ"%></li>
    <li><%= link_to "戻る", home_top_path %></li>
    </ul>
    <% end %>

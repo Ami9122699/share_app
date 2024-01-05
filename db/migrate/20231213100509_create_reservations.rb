@@ -3,8 +3,8 @@ class CreateReservations < ActiveRecord::Migration[6.1]
     create_table :reservations do |t|
       t.date :checkin
       t.date :checkout
-      t.string :people
-      t.integer :room_id
+      t.integer :people
+      
 
       t.timestamps
     end

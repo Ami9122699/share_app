@@ -1,3 +1,8 @@
 class Reservation < ApplicationRecord
-    has_many :room
+
+    belongs_to :room
+
+    validates :checkin, presence: true
+    validates :checkout, presence: true
+    validates :people, presence: true
 end
