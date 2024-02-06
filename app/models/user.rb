@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  belongs_to :reservations
+  belongs_to :room
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
