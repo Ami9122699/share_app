@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2023_12_13_100509) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "room_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
