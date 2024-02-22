@@ -1,14 +1,20 @@
 class RoomsController < ApplicationController
 
     def index
-        @rooms = Room.all #allメソッドはテーブルのレコードを全て取得できるメソッド 
+        #@rooms = Room.all #allメソッドはテーブルのレコードを全て取得できるメソッド
+        @users = current_user
+        @rooms = @users.rooms.all 
     end #indexのend
 
     def new
         @room = Room.new
+        @user = current_user
+        #@room = @user.rooms.new
     end #newのend
       
     def create
+        @user = current_user
+        #@room = @user.rooms.new(room_params)
         @room = Room.new(room_params)
         if @room.save
           flash[:notice] = "新しい施設を登録しました"  
