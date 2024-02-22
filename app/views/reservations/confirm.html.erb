@@ -1,0 +1,34 @@
+<h1>予約内容の確認</h1>
+<%= form_with model: @reservation do |f| %>
+
+<table>
+	<tbody>
+		<tr>
+			<td><%= f.label :checkin, "チェックイン"%></td>
+			<td><%= @reservation.checkin.strftime("%Y/%m/%d")if @reservation.checkin %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :checkout, "チェックアウト"%></td>
+			<td><%= @reservation.checkout.strftime("%Y/%m/%d")if @reservation.checkin %></td>
+		</tr>
+		<tr>
+			<td>日数</td>
+			<td><%= @days %>日</td>
+		</tr>
+		<tr>
+			<td>人数</td>
+			<td><%= @reservation.people %>人</td>
+		</tr>
+		<tr>
+			<td>お支払い金額</td>
+			<td><%= @price %>円</td>
+		</tr>
+		<tr>
+			<td colspan="2">上記内容で正しければ「確定」ボタンを押してください。</td>
+		</tr>
+	</tbody>
+</table>
+
+<%= f.submit"予約を確定" %>
+
+<% end %>

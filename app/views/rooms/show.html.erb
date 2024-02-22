@@ -1,0 +1,41 @@
+
+
+<table>
+  <tr>
+    <td><img alt="部屋画像"  src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" /></td>
+  </tr>
+  <tr>
+  <td><%= @room.name %></td>
+  </tr>
+  <tr>
+  <td><%= @room.address %></td>
+  </tr>
+  <tr>
+  <td><p>¥<%= @room.price %></p></td>
+  </tr>
+</table>
+
+
+<%= form_with url: reservations_confirm_path do |f| %>
+<%= f.hidden_field :room_id, value: @room.id %>
+<table>
+          <tr>
+              <th><%= f.label :checkin, "チェックイン"%></th>
+              <td><%= f.date_field :checkin %></td> 
+          </tr>
+          <tr>
+              <th><%= f.label :checkout, "チェックアウト"%></th>
+              <td><%= f.date_field :checkout %></td>
+          </tr>
+          <tr>
+              <th><%= f.label :people, "人"%></th>
+              <td><%= f.number_field :people %>名様</td>
+          </tr>
+  </table>
+ 
+   <ul>
+   <li><%= f.submit "確認画面へ"%></li>
+   <li><%= link_to "戻る", home_top_path %></li>
+   </ul>
+   <% end %>
+   

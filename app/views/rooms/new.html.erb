@@ -1,0 +1,33 @@
+<h1>施設の新規登録</h1>
+ 
+   <%= form_with model: @room do |f| %>
+   <%# form_with(model: @room, local: true) do |form| %>
+   <table>
+     <tr>
+       <th><%= f.label :name ,"施設名" %></th>
+       <td><%= f.text_field :name %></td>
+     </tr>
+ 
+     <tr>
+       <th><%= f.label :introduction ,"施設紹介" %></th>
+       <td><%= f.text_field :introduction %></td>
+     </tr>
+ 
+     <tr>
+       <th><%= f.label :price ,"宿泊料金" %></th>
+       <td><%= f.text_field :price %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :address ,"住所" %></th>
+       <td><%= f.text_field :address %></td>
+     </tr>
+   </table>
+   
+   <%= f.hidden_field :user_id, value: @user.id %>
+     <ul>
+     <li><%= f.submit "投稿を完了する" %></li>
+     <li><%= link_to "キャンセル", home_top_path %></li>
+     </ul>
+
+ <% end %>

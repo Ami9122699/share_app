@@ -1,0 +1,40 @@
+<h1>予約済み一覧</h1>
+<ul>
+<li><%= link_to "戻る", home_top_path %></li>
+</ul>
+<% if flash[:alert] %>
+ <p class="notice"><%= flash[:alert] %></p>
+<% end %>
+<table>
+    <thead>
+        <tr>
+            <th>画像</th>
+            <th>施設名</th>
+            <th>紹介文</th>
+            <th>合計金額</th>
+            <th>チェックイン</th>
+            <th>チェックアウト</th>
+            <th>予約確定日時</th>
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @reservations.each do |reservation| %>
+        <tr>
+            <td>
+            <img src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" width="150">
+            </td>
+            <td><%= reservation.room.name %></td>
+            <td><%= reservation.room.introduction %></td>
+            <td><%= @price %>円</td>
+            <td><%= reservation.checkin.strftime("%Y/%m/%d")if @reservation.checkin %></td>
+            <td><%= reservation..strftime("%Y/%m/%d")if @reservation.checkin %></td>
+            <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+            <td><%= link_to '再予約', "/reservations/#{reservation.id}" %></td>
+            <td><%= link_to "削除", reservation, method: :delete, data: {confirm: "施設を削除しますか？"} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
